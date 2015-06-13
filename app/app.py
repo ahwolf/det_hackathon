@@ -39,8 +39,8 @@ def get_points():
 
     # result needs to look like this:
     # [{"lonlat":[-83.0458, 42.3414], "name": "Belle Isle"}, {"lonlat":[lon, lat], "name": "NAME OF PARK"}...]
-
-    return jsonify(result=sport)
+    data = [{"lonlat":[-83.0458, 42.3414], "name": "Belle Isle"}]
+    return jsonify(result=data)
 
 def _get_weather():
     output = requests.get("http://api.openweathermap.org/data/2.5/find?q=Detroit&units=imperial")

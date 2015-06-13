@@ -70,7 +70,7 @@ $(".js-example-basic-single").select2({
     }, function(data) {
         console.log(data)
         removeTopLayer();
-        addLayer(data);
+        addLayer(data.result);
     });
 });
 
@@ -84,6 +84,7 @@ function removeTopLayer() {
 function addLayer(data) {
     var iconFeatures = [];
     _.each(data, function(d){
+        console.log(d, data);
         var iconFeature = new ol.Feature({
             geometry: new ol.geom.Point(ol.proj.transform(d.lonlat, 'EPSG:4326', 'EPSG:3857')),
             name: d.name,
