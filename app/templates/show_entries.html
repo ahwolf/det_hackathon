@@ -71,6 +71,7 @@ $(".js-example-basic-single").select2({
         console.log(data)
         removeTopLayer();
         addLayer(data.result);
+        addClickListener();
     });
 });
 
@@ -114,5 +115,7 @@ function addLayer(data) {
 
     map.addLayer(vectorLayer);
 }
+
+
 </script>
 {% endblock %}
