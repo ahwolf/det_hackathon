@@ -24,9 +24,23 @@ app.config['MYSQL_DATABASE_USER'] = 'root'
 app.config['MYSQL_DATABASE_DB'] = 'nbascrape'
 mysql.init_app(app)
 
-def connect_db():
-    return sqlite3.connect(app.config['DATABASE'])
+# def connect_db():
+#     return sqlite3.connect(app.config['DATABASE'])
 
+@app.route('/_get_points')
+def get_points():
+    sport = request.args.get('sport')
+
+    # This is where we need to construct the return object that has the
+    # lon / lats and info for each point.
+    # We will return that as result to the client where we will add the 
+    # layer containing those points
+    # TODO!!!
+
+    # result needs to look like this:
+    # [{"lonlat":[-83.0458, 42.3414], "name": "Belle Isle"}, {"lonlat":[lon, lat], "name": "NAME OF PARK"}...]
+
+    return jsonify(result=sport)
 
 def _get_weather():
     output = requests.get("http://api.openweathermap.org/data/2.5/find?q=Detroit&units=imperial")
@@ -37,7 +51,7 @@ def _get_weather():
     return dict(wind=wind, description=description, temperature=temperature)
 
 def _get_activities():
-    return ["swimming", "tennis", "basketball", "soccer", "baseball"]
+    return ["Aquatics", "Baseball/Softball", "Golf", "Fishing Basketball", "Tennis"]
 
 @app.route('/')
 def show_entries():
