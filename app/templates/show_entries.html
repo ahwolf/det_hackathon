@@ -1,10 +1,42 @@
-{% extends "layout.html" %}
-{% block body %}
-  <ul class=entries>
-  {% for entry in entries %}
-    <li><h2>{{ entry.player }}</h2>{{ entry.salary|safe }}
-  {% else %}
-    <li><em>Unbelievable.  No entries here so far</em>
-  {% endfor %}
-  </ul>
+{% extends "layout.html" %} {% block body %}
+<h2>Weather</h2>
+<h4>{{weather.temperature}}</h4>
+<h4>{{weather.description}}</h4>
+<h4>{{weather.wind}}</h4>
+<h2>Choose an activity</h2>
+<select class="js-example-basic-single">
+    {% for activity in activities %}
+        <option value="{{activity}}">{{activity}}</option>
+    {% endfor %}
+</select>
+<h2>My Map</h2>
+<div id="map" class="map"></div>
+<script type="text/javascript">
+var map = new ol.Map({
+    target: 'map',
+    layers: [
+        new ol.layer.Tile({
+            source: new ol.source.Stamen({
+                layer: 'toner'
+            })
+        }),
+        new ol.layer.Tile({
+            source: new ol.source.Stamen({
+                layer: 'terrain-labels'
+            })
+        })
+    ],
+
+    view: new ol.View({
+        center: ol.proj.transform([-83.0458, 42.3414], 'EPSG:4326', 'EPSG:3857'),
+        zoom: 13
+    })
+});
+
+
+    $(".js-example-basic-single").select2({
+        placeholder: "Select an activity",
+    });
+
+</script>
 {% endblock %}
