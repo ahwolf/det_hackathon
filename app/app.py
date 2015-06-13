@@ -44,7 +44,8 @@ def show_entries():
     cur = mysql.get_db().cursor()
     cur.execute("select player_id, 2013_14 from player_salary limit 5")
     entries = [dict(player=row[0], salary=row[1]) for row in cur.fetchall()]
-    weather = _get_weather()
+    # weather = _get_weather()
+    weather={}
     activities = _get_activities()
 
     return render_template('show_entries.html', entries=entries, weather=weather, activities=activities)

@@ -1,8 +1,6 @@
 {% extends "layout.html" %} {% block body %}
 <h2>Weather</h2>
-<h4>{{weather.temperature}}</h4>
-<h4>{{weather.description}}</h4>
-<h4>{{weather.wind}}</h4>
+{% include "weather.html" %}
 <h2>Choose an activity</h2>
 <select class="js-example-basic-single">
     {% for activity in activities %}
