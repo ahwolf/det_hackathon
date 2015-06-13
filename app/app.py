@@ -51,7 +51,7 @@ def _get_weather():
     return dict(wind=wind, description=description, temperature=temperature)
 
 def _get_activities():
-    return ["Aquatics", "Baseball/Softball", "Golf", "Fishing Basketball", "Tennis"]
+    return ["Aquatics", "Baseball/Softball", "Golf", "Fishing", "Basketball", "Tennis"]
 
 @app.route('/')
 def show_entries():

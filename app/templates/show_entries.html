@@ -17,18 +17,6 @@ var iconFeature = new ol.Feature({
     rainfall: 500
 });
 
-var iconStyle = new ol.style.Style({
-    image: new ol.style.Icon(({
-        anchor: [0.5, 46],
-        anchorXUnits: 'fraction',
-        anchorYUnits: 'pixels',
-        opacity: 0.75,
-        src: "{{ url_for('static', filename='img/icon.png') }}"
-    }))
-});
-
-iconFeature.setStyle(iconStyle);
-
 var vectorSource = new ol.source.Vector({
     features: [iconFeature]
 });
