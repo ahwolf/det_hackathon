@@ -15,14 +15,14 @@ USERNAME = 'admin'
 PASSWORD = 'default'
 
 # create our little application :)
-mysql = MySQL()
+# mysql = MySQL()
 app = Flask(__name__)
-Scss(app, static_dir='static', asset_dir='assets')
+# Scss(app, static_dir='static', asset_dir='assets')
 app.config.from_object(__name__)
-app.config['MYSQL_DATABASE_USER'] = 'root'
+# app.config['MYSQL_DATABASE_USER'] = 'root'
 # app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
-app.config['MYSQL_DATABASE_DB'] = 'nbascrape'
-mysql.init_app(app)
+# app.config['MYSQL_DATABASE_DB'] = 'nbascrape'
+# mysql.init_app(app)
 
 # def connect_db():
 #     return sqlite3.connect(app.config['DATABASE'])
@@ -55,14 +55,14 @@ def _get_activities():
 
 @app.route('/')
 def show_entries():
-    cur = mysql.get_db().cursor()
-    cur.execute("select player_id, 2013_14 from player_salary limit 5")
-    entries = [dict(player=row[0], salary=row[1]) for row in cur.fetchall()]
+    # cur = mysql.get_db().cursor()
+    # cur.execute("select player_id, 2013_14 from player_salary limit 5")
+    # entries = [dict(player=row[0], salary=row[1]) for row in cur.fetchall()]
     # weather = _get_weather()
     weather={}
     activities = _get_activities()
 
-    return render_template('show_entries.html', entries=entries, weather=weather, activities=activities)
+    return render_template('show_entries.html', weather=weather, activities=activities)
 
 if __name__ == '__main__':
     app.run()
